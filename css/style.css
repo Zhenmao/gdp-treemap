@@ -1,0 +1,217 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+}
+
+:root {
+  --font-family: "Inter", sans-serif;
+
+  --font-weight-heading: 700;
+  --font-weight-body: 400;
+
+  --color-background: #171717;
+  --color-text: #fff;
+  --color-text-secondary: #d4d4d4;
+  --color-negative: #f53538;
+  --color-neutral: #404040;
+  --color-positive: #32cc5b;
+  --color-highlight: #facc15;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+header {
+  --max-width: 48rem;
+}
+
+main {
+  --max-width: 80rem;
+}
+
+header,
+main {
+  width: min(100% - 3rem, var(--max-width));
+  margin: 3rem auto;
+}
+
+h1 {
+  font-weight: var(--font-weight-heading);
+  font-size: 1rem;
+  line-height: 1;
+  text-transform: uppercase;
+  width: max-content;
+  letter-spacing: 0.05em;
+  padding: 0.5em;
+  border: 0.2em solid currentColor;
+  display: grid;
+  place-content: center;
+  aspect-ratio: 1;
+}
+
+h1 > :nth-child(1) {
+  font-size: 1.35em;
+}
+
+h1 > :nth-child(2) {
+  font-size: 2.4em;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem 4rem;
+}
+
+header > :last-child {
+  color: var(--color-text-secondary);
+  flex: 1 1 40ch;
+}
+
+main {
+  display: grid;
+  gap: 2rem;
+}
+
+.color-legend {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 1px;
+}
+
+.color-legend .swatch {
+  flex-basis: 48px;
+  height: 2em;
+  display: grid;
+  place-content: center;
+  font-weight: var(--font-weight-heading);
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.treemap {
+  position: relative;
+}
+
+.treemap text {
+  fill: var(--color-text);
+  font-weight: var(--font-weight-heading);
+}
+
+.treemap .node__label {
+  user-select: none;
+  pointer-events: none;
+}
+
+.treemap .node__label--clickable {
+  cursor: pointer;
+  pointer-events: revert;
+}
+
+.treemap .node__label--clickable:hover {
+  fill: var(--color-highlight);
+}
+
+.treemap .node.highlighted .node__rect {
+  stroke: var(--color-highlight);
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  display: grid;
+  gap: 0.5rem;
+  border: 2px solid var(--color-highlight);
+  opacity: 0;
+  visibility: hidden;
+  transition-property: opacity, visibility;
+  transition-duration: 0.2s;
+}
+
+.tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip .tooltip__title {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-heading);
+}
+
+.tooltip .tooltip__key {
+  font-size: 0.875rem;
+}
+
+.tooltip .tooltip__value {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-heading);
+}
