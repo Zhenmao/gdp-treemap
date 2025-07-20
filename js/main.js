@@ -1,4 +1,3 @@
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import colorLegend from "./color-legend.js";
 import treemap from "./treemap.js";
 
@@ -11,6 +10,9 @@ Promise.all([
   const data = processData(gdpCSV, gdpGrowthCSV, metaCSV);
 
   const color = getColorScale();
+
+  d3.select("#loader").remove();
+
   colorLegend({
     el: document.getElementById("legend"),
     color,

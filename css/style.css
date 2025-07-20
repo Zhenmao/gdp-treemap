@@ -130,7 +130,7 @@ header > :last-child {
   flex: 1 1 40ch;
 }
 
-main {
+figure {
   display: grid;
   gap: 2rem;
 }
@@ -214,4 +214,44 @@ main {
 .tooltip .tooltip__value {
   font-size: 1.5rem;
   font-weight: var(--font-weight-heading);
+}
+
+.loader-container {
+  height: 640px;
+  display: grid;
+  place-content: center;
+}
+.loader {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: var(--color-negative);
+  transform: translate(12px) rotateX(65deg) rotate(45deg);
+  color: #fff;
+  animation: layers1 1s linear infinite alternate;
+}
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  animation: layerTr 1s linear infinite alternate;
+}
+
+@keyframes layers1 {
+  0% {
+    box-shadow: 0px 0px 0 0px;
+  }
+  90%,
+  100% {
+    box-shadow: 20px 20px 0 -4px;
+  }
+}
+@keyframes layerTr {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-25px, -25px) scale(1);
+  }
 }
